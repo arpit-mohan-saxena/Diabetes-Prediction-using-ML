@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SugarSense – Diabetes Risk Predictor</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #f8f9fa;
+        color: #333;
+      }
+
+      header {
+        background: #4caf50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+      }
+
+      .project-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+        margin: 0;
+      }
+
+      header p {
+        font-size: 1.1rem;
+        margin-top: 5px;
+      }
+
+      .btn {
+        background: white;
+        color: #4caf50;
+        padding: 12px 24px;
+        margin-top: 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #e0f2e9;
+      }
+
+      .auth-links {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .auth-links a {
+        color: white;
+        font-weight: bold;
+        margin-left: 15px;
+        text-decoration: underline;
+      }
+
+      .section {
+        padding: 50px 20px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .section h2 {
+        color: #4caf50;
+        text-align: center;
+      }
+
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .card {
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex: 1 1 300px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 30px 10px;
+      }
+
+      footer a {
+        color: #4caf50;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.3rem;
+        }
+
+        .project-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="auth-links">
+        {% if user.is_authenticated %} Hello, {{ user.username }} |
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
+      </div>
+
+      <div class="project-title">SugarSense</div>
+      <h1>Know Your Risk. Take Control.</h1>
+      <p>Predict diabetes with our AI-powered health tool.</p>
+      <a href="{% url 'predict' %}" class="btn">Start Prediction</a>
+    </header>
+
+    <section class="section" id="how">
+      <h2>How It Works</h2>
+      <div class="features">
+        <div class="card">
+          <h3>1. Enter Details</h3>
+          <p>Fill in basic health information like glucose, age, BMI, etc.</p>
+        </div>
+        <div class="card">
+          <h3>2. AI Predicts</h3>
+          <p>Our machine learning model analyzes your risk in seconds.</p>
+        </div>
+        <div class="card">
+          <h3>3. Get Result</h3>
+          <p>Instant feedback with personalized advice and tips.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>About Diabetes</h2>
+      <p style="text-align: center; max-width: 800px; margin: auto">
+        Diabetes is a chronic health condition that affects how your body turns
+        food into energy. Early detection is key. This tool helps identify your
+        risk based on scientifically backed models.
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2025 SugarSense |
+        <a href="#about">About</a> | <a href="#how">How It Works</a> |
+        <a href="#">Contact</a>
+      </p>
+    </footer>
+  </body>
+</html>

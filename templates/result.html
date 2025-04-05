@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prediction Result</title>
+    <style>
+      .danger-bg {
+        background: linear-gradient(to right, #ff6b6b, #ffcc70);
+      }
+
+      .safe-bg {
+        background: linear-gradient(to right, #a8e063, #56ab2f);
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px 20px;
+        margin: 0;
+      }
+
+      header {
+        padding: 20px;
+        background-color: #ffffffcc;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+      }
+
+      header h1 a {
+        text-decoration: none;
+        color: #2f7d2f;
+        transition: color 0.3s ease;
+      }
+
+      header h1 a:hover {
+        color: #1a5e1a;
+      }
+
+      .container {
+        background-color: #ffffffcc;
+        display: inline-block;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #1f4e1f;
+        margin-bottom: 20px;
+        font-size: 28px;
+      }
+
+      .btn {
+        background-color: #ffffff;
+        color: #2f7d2f;
+        padding: 10px 25px;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s ease;
+        display: inline-block;
+        margin-top: 25px;
+      }
+
+      .btn:hover {
+        background-color: #e0ffe0;
+      }
+
+      .tips {
+        text-align: left;
+        margin-top: 30px;
+      }
+
+      .tips h2 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .tips ul {
+        padding-left: 20px;
+      }
+
+      .tips li {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body class="{{ bg_class }}">
+    <header>
+      <h1><a href="{% url 'home' %}">SugarSense</a></h1>
+    </header>
+
+    <div class="container">
+      <h1>{{ result2 }}</h1>
+      <div class="tips">
+        <h2>{{ tips_heading }}</h2>
+        <ul>
+          {% for tip in tips %}
+          <li>{{ tip }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <a href="{% url 'predict' %}" class="btn">Predict Again</a>
+    </div>
+  </body>
+</html>
